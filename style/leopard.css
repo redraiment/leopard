@@ -1,0 +1,90 @@
+.ui-widget {
+    font-size: 1em;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: "Lucida Grande","Lucida Sans Unicode",Helvetica,Arial,Verdana,sans-serif;
+}
+
+html, body, #menu {
+    height: 100%;
+}
+
+#menu {
+    border-right: 1px solid black;
+    background-color: #F0EEEE;
+    width: 199px;
+    float: left;
+}
+
+#menu > #logo {
+    background-image: url(../image/leopard.png);
+    background-position: top center;
+    background-repeat: no-repeat;
+    height: 80px;
+}
+
+#menu ul {
+    list-style-position: inside;
+    list-style-type: none;
+}
+
+#menu li {
+    margin: 0.5em 0;
+    padding-left: 40px;
+    line-height: 2em;
+}
+
+#menu li.selected {
+    background-color: #7C7BAD;
+    color: white;
+}
+
+#menu a {
+    font-size: x-large;
+    text-decoration: none;
+    color: #4C4C4C;
+}
+
+#menu a:hover {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#menu li.selected > a {
+    color: white;
+}
+
+#main {
+    margin-left: 200px;
+}
+
+#main #toolbar {
+    background-color: #454343;
+    background-image: linear-gradient(to bottom, #646060, #262626);
+    line-height: 32px;
+    height: 32px;
+    color: white;
+}
+
+#main #toolbar .toolbar-button {
+    padding: 0 1em;
+    float: right;
+}
+
+#main #toolbar #sign-off {
+    background-color: #454343;
+    background-image: linear-gradient(to bottom, #FC8787, #800000);
+    line-height: 32px;
+    height: 32px;
+}
+
+#main #dashboard {
+    padding: 20px;
+}
+
+div.ui-jqgrid-titlebar {
+    height: 16px;
+}
