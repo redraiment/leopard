@@ -1,64 +1,99 @@
-
-create view custom_collect_list as
+create view product_marked_list as
 select
-  custom_id,
-  sum(amount) as amount
+  p.id as product_id,
+  sum(count) as count
 from
-  collect
-where
-  visible = true
-group by
-  custom_id;
-
-create view custom_sell_list as
-select
-  custom_id,
-  sum(price * count) as total
-from
-  sell
-where
-  visible = true
-group by
-  custom_id;
-
-create view custom_list as
-select
-  c.id,
-  c.name,
-  ifnull(s.total, 0) as total,
-  ifnull(o.amount, 0) as amount,
-  ifnull(s.total, 0) - ifnull(o.amount, 0) as rest
-from
-  custom as c
-left join
-  custom_collect_list as o
-on
-  c.id = o.custom_id
-left join
-  custom_sell_list as s
-on
-  c.id = s.custom_id
-where
-  visible = true
-order by
-  ifnull(s.total, 0) - ifnull(o.amount, 0) desc,
-  c.id asc;
-
-create view collect_list as
-select
-  c.id,
-  c.date,
-  c.amount,
-  t.id as custom
-from
-  collect as c
+  products as p
 inner join
-  custom as t
+  checkin_records as c
 on
-  c.custom_id = t.id
-  and t.visible = true
+  p.id = c.product_id
 where
-  c.visible = true
+  has_marked = true
+  and p.visible = true
+  and c.visible = true
+  and property = 0
+group by
+  p.id;
+
+create view product_unmarked_list as
+select
+  p.id as product_id,
+  sum(count) as count
+from
+  products as p
+inner join
+  checkin_records as c
+on
+  p.id = c.product_id
+where
+  has_marked = false
+  and p.visible = true
+  and c.visible = true
+  and property = 0
+group by
+  p.id;
+
+create view product_unqualified_list as
+select
+  p.id as product_id,
+  sum(count) as count
+from
+  products as p
+inner join
+  checkin_records as c
+on
+  p.id = c.product_id
+where
+  p.visible = true
+  and c.visible = true
+  and property > 0
+group by
+  p.id;
+
+create view product_list as
+select
+  p.id,
+  p.private_id,
+  p.name,
+  ifnull(m.count, 0) as marked,
+  ifnull(u.count, 0) as unmarked,
+  ifnull(q.count, 0) as unqualified
+from
+  products as p
+left join
+  product_marked_list as m
+on
+  p.id = m.product_id
+left join
+  product_unmarked_list as u
+on
+  p.id = u.product_id
+left join
+  product_unqualified_list as q
+on
+  p.id = q.product_id
+where
+  p.visible = true
 order by
-  c.date desc,
-  c.id desc;
+  p.private_id;
+
+--
+
+create view checkin_list as
+select
+  id,
+  product_id,
+  date,
+  property,
+  rack_id,
+  has_marked,
+  count,
+  description
+from
+  checkin_records
+where
+  visible = true;
+
+--
+--

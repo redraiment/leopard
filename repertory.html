@@ -3,7 +3,7 @@
       xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>金钱豹进销存系统</title>
+    <title>仓库 - 金钱豹进销存系统</title>
     <link rel="shortcut icon" type="image/png" href="image/fav.png" />
     <link rel="stylesheet" type="text/css" href="style/jquery-ui.css" />
     <link rel="stylesheet" type="text/css" href="style/jquery-ui-ac-combobox.css" />
@@ -14,14 +14,15 @@
     <script type="text/javascript" src="script/jquery-ui-ac-combobox.js"></script>
     <script type="text/javascript" src="script/jquery-grid-locale-cn.js"></script>
     <script type="text/javascript" src="script/jquery-grid.js"></script>
+    <script type="text/javascript" src="script/leopard-repertory.js"></script>
   </head>
   <body>
     <div id="menu">
       <div id="logo"></div>
       <ul>
-        <li class="selected">首页</li>
+        <li><a href="index.html">首页</a></li>
         <li><a href="deliver.html">销售</a></li>
-        <li><a href="repertory.html">仓库</a></li>
+        <li class="selected">仓库</li>
         <li><a href="purchase.html">采购</a></li>
       </ul>
     </div>
@@ -30,7 +31,10 @@
         <div id="sign-off" class="toolbar-button">退出</div>
         <div class="toolbar-button">欢迎使用金钱豹进销存管理系统</div>
       </div>
-      <h1>欢迎使用金钱豹进销存管理系统</h1>
+      <div id="dashboard">
+        <table id="list"></table>
+        <div id="navigator"></div>
+      </div>
     </div>
   </body>
 </html>

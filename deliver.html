@@ -14,13 +14,14 @@
     <script type="text/javascript" src="script/jquery-ui-ac-combobox.js"></script>
     <script type="text/javascript" src="script/jquery-grid-locale-cn.js"></script>
     <script type="text/javascript" src="script/jquery-grid.js"></script>
+    <script type="text/javascript" src="script/leopard-deliver.js"></script>
   </head>
   <body>
     <div id="menu">
       <div id="logo"></div>
       <ul>
-        <li class="selected">首页</li>
-        <li><a href="deliver.html">销售</a></li>
+        <li><a href="index.html">首页</a></li>
+        <li class="selected">销售</li>
         <li><a href="repertory.html">仓库</a></li>
         <li><a href="purchase.html">采购</a></li>
       </ul>
@@ -30,7 +31,10 @@
         <div id="sign-off" class="toolbar-button">退出</div>
         <div class="toolbar-button">欢迎使用金钱豹进销存管理系统</div>
       </div>
-      <h1>欢迎使用金钱豹进销存管理系统</h1>
+      <div id="dashboard">
+        <table id="list"></table>
+        <div id="navigator"></div>
+      </div>
     </div>
   </body>
 </html>

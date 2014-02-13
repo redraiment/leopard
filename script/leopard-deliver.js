@@ -1,23 +1,19 @@
 $(function() {
-    $('#purchase').jqGrid({
-        caption: '销售清单',
+    $('#list').jqGrid({
+        caption: '应收列表',
         autowidth: true,
         height: 'auto',
         datatype: 'xml',
-        url: 'service/sell/list.php',
-        editurl: 'service/sell/edit.php',
-        colNames: ['客户', '总交易', '已收款', '余款'],
+        url: 'service/vendee.php',
+        editurl: 'service/vendee.php',
+        colNames: ['客户', '销售额', '应收'],
         colModel: [{
-            name: 'custom',
-            index: 'custom',
+            name: 'name',
+            index: 'name',
             editable: true,
             edittype: 'text',
             editoptions: { size: 10 },
             editrules: { required: true }
-        }, {
-            name: 'total-amount',
-            index: 'total-amount',
-            align: 'right'
         }, {
             name: 'amount',
             index: 'amount',
@@ -36,13 +32,17 @@ $(function() {
             sid = gid + '_s';
             $('#' + gid).html(template.replace(/\{id\}/g, sid));
             $('#' + sid).jqGrid({
-                caption: '销售记录',
+                caption: '发货清单',
                 autowidth: true,
                 height: 'auto',
                 datatype: 'xml',
                 url: 'service/sell/deliver.php?id=' + id,
-                colNames: ['发货日期', '产品', '售价', '数量'],
+                colNames: ['单号', '日期', '产品', '售价', '数量'],
                 colModel: [{
+                    name: 'id',
+                    index: 'id',
+                    align: 'center'
+                }, {
                     name: 'date',
                     index: 'date',
                     align: 'center'

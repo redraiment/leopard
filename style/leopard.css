@@ -34,7 +34,8 @@ html, body, #menu {
 #menu li {
     margin: 0.5em 0;
     padding-left: 40px;
-    line-height: 2em;
+    font-size: x-large;
+    line-height: 1.3em;
 }
 
 #menu li.selected {
@@ -43,7 +44,6 @@ html, body, #menu {
 }
 
 #menu a {
-    font-size: x-large;
     text-decoration: none;
     color: #4C4C4C;
 }
